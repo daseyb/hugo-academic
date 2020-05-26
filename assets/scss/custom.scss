@@ -1,1 +1,35 @@
 // Override this file to add your own SCSS styling.
+
+.gallery a[data-fancybox] video {
+    height: 250px;
+    width: auto;
+    max-width: inherit;
+    display: inherit;
+    margin: 0;
+    padding: 4px;
+    box-shadow: none;
+    vertical-align: inherit;
+  }
+
+.fancybox-video {
+    background: transparent;
+    border: 0;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    max-height: none;
+    max-width: none;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%;
+}
+
+.fancybox-slide--video {
+    overflow: hidden;
+    padding: 44px 0;
+}

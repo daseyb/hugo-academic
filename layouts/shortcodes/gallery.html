@@ -14,23 +14,37 @@
 {{ end }}
 
 <div class="gallery">
-
   {{/* Attempt to automatically load gallery images from page bundle */}}
-  {{ $images := ($resource_page.Resources.ByType "image").Match $album_path }}
+  {{ $images := ($resource_page.Resources).Match $album_path }}
   {{ with $images }}
-  {{ range $images }}
-    {{ $image := .Resize "x190" }}
-    {{/* Check if the user set a caption for this image */}}
-    {{ $filename := path.Base .Name }}
-    {{ $caption := "" }}
-    {{ if $.Page.Params.gallery_item }}
-      {{ range (where (where $.Page.Params.gallery_item "album" $album) "image" $filename) }}
-        {{ $caption = .caption }}
+  {{ range sort $images "Name" }}
+    {{ if eq .ResourceType "image" }}
+      {{ $image := .Resize "x190" }}
+      {{/* Check if the user set a caption for this image */}}
+      {{ $filename := path.Base .Name }}
+      {{ $caption := "" }}
+      {{ if $.Page.Params.gallery_item }}
+        {{ range (where (where $.Page.Params.gallery_item "album" $album) "image" $filename) }}
+          {{ $caption = .caption }}
+        {{ end }}
       {{ end }}
+    <a data-fancybox="gallery-{{$album}}" href="{{ .RelPermalink }}" {{ with $caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }}>
+      <img data-src="{{ $image.RelPermalink }}" class="lazyload" alt="" width="{{ $image.Width }}" height="{{ $image.Height }}">{{/* Width & height (or low res src) required for lazy loading. */}}
+    </a>
+    {{ else }}
+      {{ $image := . }}
+      {{/* Check if the user set a caption for this image */}}
+      {{ $filename := path.Base .Name }}
+      {{ $caption := "" }}
+      {{ if $.Page.Params.gallery_item }}
+        {{ range (where (where $.Page.Params.gallery_item "album" $album) "image" $filename) }}
+          {{ $caption = .caption }}
+        {{ end }}
+      {{ end }}
+      <a data-fancybox="gallery-{{$album}}" href="{{ .RelPermalink }}" {{ with $caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }}>
+        <video autoplay muted loop src="{{ $image.RelPermalink }}" alt="">
+      </a>
     {{ end }}
-  <a data-fancybox="gallery-{{$album}}" href="{{ .RelPermalink }}" {{ with $caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }}>
-  <img data-src="{{ $image.RelPermalink }}" class="lazyload" alt="" width="{{ $image.Width }}" height="{{ $image.Height }}">{{/* Width & height (or low res src) required for lazy loading. */}}
-  </a>
   {{end}}
 
   {{else}}
