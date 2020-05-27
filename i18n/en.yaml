@@ -138,6 +138,9 @@
 - id: abstract
   translation: Abstract
 
+- id: acknowledgements
+  translation: Acknowledgements
+
 - id: publication
   translation: Publication
 

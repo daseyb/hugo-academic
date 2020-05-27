@@ -24,6 +24,8 @@ abstract: ""
 # Summary. An optional shortened abstract.
 summary: ""
 
+acknowledgements: ""
+
 tags: []
 categories: []
 featured: false

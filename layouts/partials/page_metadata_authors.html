@@ -7,11 +7,11 @@
     {{- $profile_page := site.GetPage (printf "/%s/%s" $taxonomy .) -}}
     {{- $name := $profile_page.Title | default $name_raw -}}
     {{- if gt $index 0 }}, {{ end -}}
-    <span>
+    <span style="font-size: 1.0rem; color: rgba(0,0,0,0.8);">
       {{- if and $profile_page $link_authors -}}
         <a href="{{$profile_page.RelPermalink}}">{{$name}}</a>
       {{- else -}}
-        {{$name}}
+        {{$name | markdownify}}
       {{- end -}}
     </span>
   {{- end -}}
