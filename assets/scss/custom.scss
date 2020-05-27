@@ -11,6 +11,18 @@
     vertical-align: inherit;
   }
 
+  @media screen and (max-width: 768px) {
+    .gallery a[data-fancybox] video  {
+      height: auto;
+      width: 100%; /* 1 column */
+    }
+
+    .gallery a[data-fancybox] img  {
+        height: auto;
+        width: 100%; /* 1 column */
+      }
+  }
+
 .fancybox-video {
     background: transparent;
     border: 0;
@@ -22,9 +34,6 @@
     padding: 0;
     position: absolute;
     top: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     width: 100%;
 }
