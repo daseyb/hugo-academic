@@ -24,7 +24,6 @@ article {
 }
 
 .article-header {
-  position: relative; /* Required for caption positioning */
   clear: both;
 }
 
@@ -34,45 +33,38 @@ article {
 }
 
 .featured-image-wrapper {
-  position: relative;
   padding-left: 0; /* Override container padding. */
   padding-right: 0; /* Override container padding. */
 }
 
 .featured-image {
-  position: relative;
   width: 100%;
   display: block;
   margin: 0 auto;
 }
 
 .article-header-caption {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  font-size: 0.6rem;
+  font-style: italic;
+  text-align: justify;
   margin: 0 auto;
-  padding: 2px 5px;
-  color: #fff;
-  font-size: .7em;
-  background: #000;
-  text-align: right;
-  z-index: 5;
-  opacity: 0.65;
-  border-radius: 5px 0 0 0;
+  margin-top: 10px;
+  line-height: 0.9rem;
+  display: block;
 }
-@media (min-width: 64em) {
+
+@media (max-width: 64em) {
   .article-header-caption {
     padding: 5px 10px;
   }
 }
 
 .article-header-caption a {
-  color: #fff;
   text-decoration: none;
 }
 
 .article-title {
-  font-size: 1.75rem;
+  font-size: 1.3rem;
 }
 
 .article-title a {

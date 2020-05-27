@@ -36,12 +36,17 @@
 
 
 .author-name {
-    font-size: 1.0rem; 
+    font-size: 0.9rem; 
     color: rgba(0,0,0,0.8);
+    white-space:nowrap;
 }
 
 .author-name a {
     font-weight: bold;
-    font-size: 1.0rem; 
+    font-size: 0.9rem; 
     color: rgba(0,0,0,0.8);
+}
+
+p {
+    text-align: justify;
 }
