@@ -19,7 +19,8 @@
   {{ with $images }}
   {{ range sort $images "Name" }}
     {{ if eq .ResourceType "image" }}
-      {{ $image := .Resize "x190" }}
+      {{ $image := cond (in .MediaType.Suffixes "gif") . (.Resize "x190") }}
+
       {{/* Check if the user set a caption for this image */}}
       {{ $filename := path.Base .Name }}
       {{ $caption := "" }}
